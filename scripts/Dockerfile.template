@@ -1,6 +1,15 @@
 FROM archlinux:base-devel
 
 RUN pacman -Sy && pacman -S --noconfirm \
-            stlink \
-            usbutils \
-            gdb \
+	stlink \
+	usbutils \
+	arm-none-eabi-binutils \
+	arm-none-eabi-gcc \
+	arm-none-eabi-gdb \
+	arm-none-eabi-newlib
+
+RUN echo "root:root" | chpasswd
+
+COPY ./scripts/entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
