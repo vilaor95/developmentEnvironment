@@ -17,3 +17,8 @@ docker run -it --rm \
 	-v ${DEPLOY_PATH}:/home/developer/deploy \
 	-w /home/developer/workspace \
 	${DOCKER_IMAGE}
+
+if [[ $? -ne 0 ]]; then
+	echo "$0: failed to start docker image $DOCKER_IMAGE"
+	echo "Check if this is the desired image or build it from https://github.com/vilaor95/developmentEnvironment.git"
+fi
