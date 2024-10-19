@@ -1,6 +1,6 @@
 .PHONY: clean
 clean:
-	rm Dockerfile
+	- rm Dockerfile
 
 .PHONY: build
 build:
